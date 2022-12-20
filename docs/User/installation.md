@@ -32,7 +32,7 @@ If you are a Github user, you can simply fork and clone Graphitti. If you are ne
 
 ## 1.2.3 Install Graphitti
 
-In order to compile and run Graphitti, you will need to set up a couple things in the [**CMakeLists.txt**](CMakeLists.txt) first. 
+In order to compile and run Graphitti, you will need to set up a couple things in the [**CMakeLists.txt**](https://github.com/UWB-Biocomputing/Graphitti/CMakeLists.txt) first. 
 
 1. Change to Graphitti directory in your terminal
 
