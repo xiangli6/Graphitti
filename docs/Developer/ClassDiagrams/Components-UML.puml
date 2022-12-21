@@ -1,16 +1,7 @@
 @startuml package UML
 
-/' set up color '/
+/' set up line '/
 skinparam linetype ortho
-skinparam package{
-    backgroundColor Gray
-    'linetype ortho
-}
-
-skinparam class{
-    backgroundColor Gold
-}
-
 
 /' packages '/
 
@@ -33,21 +24,15 @@ skinparam class{
     CPUSpikingModel-[hidden]right>GPUSpilingModel
     CPUSpikingModel-[hidden]->Operations
    OperationManager -[hidden]->ParameterManager
-
-    'outside of this package
-    'Simulator ->LayoutsFactory
-    'Simulator -->ConnectionsFactory
-
 }
 
 package Layouts{
-    'Model <-[#red] Layout
     class FixedLayout implements Layout
     class DynamicLayout implements Layout
+    class LayoutsFactory
     FixedLayout <-- LayoutsFactory
     DynamicLayout<-- LayoutsFactory
-
-    class LayoutsFactory
+    
 }
 
 package Vertices{
@@ -58,8 +43,6 @@ package Vertices{
     class VerticesFactory 
     VerticesFactory -up->AllLiFNeurons
     VerticesFactory -up->AllZHNeurons
-
-
 }
 
 package Recorders{
@@ -75,13 +58,9 @@ package Recorders{
 }
 
 package Connections{
-    'Model <-[#red] Connections
-
-
     class ConnStatic implements Connections
     class ConnGrowth Implements Connections
     class ConnectionsFactory
-    'ConnStatic -down-
     ConnectionsFactory --up> ConnStatic
     ConnectionsFactory --up> ConnGrowth
    
@@ -121,26 +100,5 @@ Connections o-[#red]- IRecorder
 Connections o-[#red]- AllEdges
 Connections <-[#red]---- RecordersFactory
 Connections <-[#red]---- EdgesFactory
-
-
-
-
-
-'group1 -[hidden]->group2
-
-
-
-/'  relationships of classes in different package'/
-
-    'outside of this package
-    'Simulator ->LayoutsFactory
-    'Simulator -->ConnectionsFactory
- 
-
-'Layouts ---[hidden]--Connections
-'Recorders -left[hidden]-Connections
-
-
-
 
 @enduml
